@@ -18,7 +18,7 @@ const initilizeDbAndServer = async() =>{
         filename:dbPath,
         driver:sqlite3.Database
     })
-    app.listen(5000, () => {
+    app.listen("5000", () => {
         console.log("server is running");
     })}catch(e){
         console.log(`Db error ${e.message}`);
@@ -41,6 +41,5 @@ app.post("/student" , async(request,response) =>{
 app.post("/message", async(request,response) => {
     const {name,email,message} = request.body;
     const query = `INSERT INTO message (name,email,message) VALUES ("${name}","${email}", "${message}");`;
-
     await db.run(query);
 })
